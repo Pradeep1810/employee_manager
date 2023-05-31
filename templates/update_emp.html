@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body>
+
+    {% include 'emp_nav_bar.html' %}
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="card my-3">
+            
+            <div class="card-body">
+
+              <form action = "/emp/do_update/{{emp.id}}">
+                <div class="mb-3">
+
+                  <label for="employeeName" class="form-label">Name </label>
+                  <input type="text" class="form-control" id="employeeName" name = "empName" aria-describedby="nameHelp" , value = {{emp.name}} , disabled>
+                  <div id="nameHelp" class="form-text">Enter name as on company card</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputAge" class="form-label">Age </label>
+                  <input type="text" class="form-control" id="exampleInputAge" name = "empAge" value="{{emp.age}}" , disabled>
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputNumber" class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" id="exampleInputNumber" name = "empNumber" , value= {{emp.phone_number}}>
+                </div>
+
+
+
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Employee Address</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="empAddress">{{emp.address}}</textarea>
+                </div>
+
+                <div class="mb-3 form-check">
+                  <input {% if emp.isOnTable %} checked {% endif %} type="checkbox" class="form-check-input" id="exampleCheck1" name = "isOnBenchCheck" value="True">
+                  <label class="form-check-label" for="exampleCheck1">On Bench ?</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+ 
+    
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>

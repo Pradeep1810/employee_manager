@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us </title>
+</head>
+<body>
+
+    
+
+    <div style="text-align: center;">
+            
+        {% include "navBar.html" %} 
+
+        <h1>About us : </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, eum similique aspernatur rem tempora cum ipsa enim error nulla quaerat accusamus, laudantium, delectus facere a beatae explicabo qui.</p>        
+ 
+         <hr>
+             
+         <!-- this is a simple input from template taken to view -->
+             
+        
+         <form action="/about/" method="POST">
+
+            {% csrf_token %} <!-- csrf token required when method is post -->
+
+           <input type="checkbox" name="checkbox"  value="True"> 
+           <button type="submit">Submit</button>
+
+         </form>
+          <!--use python template language we are using an condition if -->
+
+          <!--- only shows data when condition is satisified --->
+
+          <!-- the below is from view to template we use the dict keyword and dic is created in view with the data -->
+
+          {% if doShow %}
+         <div class="container"> 
+ 
+            <h1>Student Details : </h1>
+            <h2> Name : {{student_data.student_name}} </h2>
+            <h3>Subject : {{student_data.student_subject}}</h3>
+            <h4>Goal : {{student_data.student_goal}}</h4>
+
+         </div>
+
+          {% endif %}
+
+    </div>
+    
+</body>
+</html>
